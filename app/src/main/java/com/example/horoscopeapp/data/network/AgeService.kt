@@ -1,8 +1,7 @@
-package com.example.horoscopeapp.data
+package com.example.horoscopeapp.data.network
 
 import android.util.Log
-import androidx.compose.ui.text.toLowerCase
-import com.example.horoscopeapp.data.dto.Age
+import com.example.horoscopeapp.data.network.dto.Age
 import com.example.horoscopeapp.util.Constants
 import io.ktor.client.HttpClient
 import io.ktor.client.features.ClientRequestException

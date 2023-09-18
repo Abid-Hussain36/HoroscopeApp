@@ -21,7 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.horoscopeapp.R
-import com.example.horoscopeapp.data.dto.Age
+import com.example.horoscopeapp.data.network.dto.Age
 
 
 @Composable
@@ -95,16 +95,10 @@ fun HomeScreen(
                     .padding(top = 16.dp)
             )
         }
-        Box(
-            contentAlignment = Alignment.Center,
+        SaveDataButton(
+            onSaveClick = {viewModel.saveAgeData(ageData.count, ageData.name, ageData.age)},
             modifier = Modifier.padding(top = 16.dp)
-        ){
-            Button(
-                onClick = { /*TODO*/ },
-            ) {
-                Text(text = "Save Data")
-            }
-        }
+        )
     }
 }
 
@@ -144,4 +138,23 @@ fun AgeSearchField(
         },
         modifier = modifier
     )
+}
+
+@Composable
+fun SaveDataButton(
+    onSaveClick: () -> Unit,
+    modifier: Modifier
+){
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+    ){
+        Button(
+            onClick = {
+                onSaveClick()
+            },
+        ) {
+            Text(text = "Save Data")
+        }
+    }
 }

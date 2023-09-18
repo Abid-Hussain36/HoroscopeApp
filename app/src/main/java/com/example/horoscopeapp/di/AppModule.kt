@@ -1,6 +1,10 @@
 package com.example.horoscopeapp.di
 
-import com.example.horoscopeapp.data.AgeService
+import android.app.Application
+import androidx.room.Room
+import com.example.horoscopeapp.data.database.SavedAgeDAO
+import com.example.horoscopeapp.data.database.SavedAgeDatabase
+import com.example.horoscopeapp.data.network.AgeService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +23,7 @@ import javax.inject.Singleton
 object AppModule {
     @Provides
     @Singleton
-    fun provideKtorClient(): HttpClient{
+    fun provideKtorClient(): HttpClient {
         return HttpClient(Android){
             install(JsonFeature){
                 serializer = KotlinxSerializer()
@@ -32,7 +36,17 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideAgeService(client: HttpClient): AgeService{
+    fun provideAgeService(client: HttpClient): AgeService {
         return AgeService(client)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSavedArticlesDatabase(app: Application): SavedAgeDatabase {
+        return Room.databaseBuilder(
+            app,
+            SavedAgeDatabase::class.java,
+            "saved_age.db"
+        ).build()
     }
 }

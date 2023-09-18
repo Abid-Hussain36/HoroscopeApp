@@ -1,4 +1,4 @@
-package com.example.horoscopeapp.data.dto
+package com.example.horoscopeapp.data.network.dto
 
 import kotlinx.serialization.Serializable
 
