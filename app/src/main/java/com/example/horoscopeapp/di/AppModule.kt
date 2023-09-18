@@ -2,7 +2,6 @@ package com.example.horoscopeapp.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.horoscopeapp.data.database.SavedAgeDAO
 import com.example.horoscopeapp.data.database.SavedAgeDatabase
 import com.example.horoscopeapp.data.network.AgeService
 import dagger.Module

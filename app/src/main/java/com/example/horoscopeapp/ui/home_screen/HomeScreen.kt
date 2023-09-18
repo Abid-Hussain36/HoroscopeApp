@@ -48,8 +48,9 @@ fun HomeScreen(
                 .padding(horizontal = 20.dp)
         )
         if(!ageData.name.isNullOrEmpty()){
+            val formattedName = ageData.name!![0].toUpperCase().toString() + ageData.name!!.drop(1)
             Text(
-                text = "You typed in ${ageData.name}",
+                text = "You typed in ${formattedName}",
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 16.dp),
@@ -81,7 +82,7 @@ fun HomeScreen(
         }
         if(ageData.count != null){
             Text(
-                text = "There are ${ageData.count} people named ${ageData.name} on the planet!",
+                text = "There are ${ageData.count} people named ${ageData.name}!",
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 16.dp)

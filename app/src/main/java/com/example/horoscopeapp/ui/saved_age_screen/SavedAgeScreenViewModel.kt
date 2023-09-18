@@ -18,14 +18,17 @@ class SavedAgeScreenViewModel @Inject constructor(
     fun deleteSavedAge(savedAge: SavedAge){
         viewModelScope.launch{
             database.savedAgeDAO().deleteSavedAge(savedAge)
+            updateSavedAgeData()
         }
     }
 
     fun updateSavedAgeData(){
-        viewModelScope.launch{ savedAgeData.value = database.savedAgeDAO().getAllAges() }
+        viewModelScope.launch{
+            savedAgeData.value = database.savedAgeDAO().getAllAges()
+        }
     }
 
     init {
-        viewModelScope.launch{ savedAgeData.value = database.savedAgeDAO().getAllAges() }
+        updateSavedAgeData()
     }
 }

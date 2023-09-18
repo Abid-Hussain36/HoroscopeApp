@@ -34,8 +34,11 @@ class HomeScreenViewModel @Inject constructor(
     }
 
     fun saveAgeData(count: Int?, name: String?, age: Int?){
-        viewModelScope.launch {
-            database.savedAgeDAO().insertSavedAge(SavedAge(count, name, age))
+        if(count != null && name != null && age != null){
+            val formattedName = name[0].toUpperCase().toString() + name.drop(1)
+            viewModelScope.launch {
+                database.savedAgeDAO().insertSavedAge(SavedAge(count, formattedName, age))
+            }
         }
     }
 }
