@@ -5,8 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class SavedAge(
-    val count: Int? = null,
-    val name: String? = null,
-    val age: Int? = null,
-    @PrimaryKey(autoGenerate = true) val id: Int = 0
-    )
+    val count: Int,
+    @PrimaryKey val name: String,
+    val age: Int
+)

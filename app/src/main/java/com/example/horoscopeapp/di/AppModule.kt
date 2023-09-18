@@ -46,6 +46,6 @@ object AppModule {
             app,
             SavedAgeDatabase::class.java,
             "saved_age.db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 }
